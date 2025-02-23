@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Countdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy New Year 2025!</h1>
+    <p id="date"></p>
+    <p id="day-counter"></p>
+
+    <script>
+        function updateDateAndCounter() {
+            const today = new Date();
+            const startOfYear = new Date(today.getFullYear(), 0, 1);
+            const dayOfYear = Math.ceil((today - startOfYear + 1) / 86400000);
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date').innerText = `Today's date: ${today.toLocaleDateString('en-US', options)}`;
+            document.getElementById('day-counter').innerText = `Day ${dayOfYear}/365`;
+        }
+
+        updateDateAndCounter();
+        setInterval(updateDateAndCounter, 86400000); // Update every 24 hours
+    </script>
+
+</body></html>
